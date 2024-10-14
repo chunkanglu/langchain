@@ -3,15 +3,15 @@ from typing import TYPE_CHECKING, List
 from langchain_core.tools import BaseTool
 from langchain_core.tools.base import BaseToolkit
 
-from langchain_community.utilities.discord import DiscordAPIWrapper
 from langchain_community.tools.discord import (
-    DiscordGetMessages,
-    DiscordGetMembers,
-    DiscordSendMessage,
-    DiscordDeleteMessage,
-    DiscordGetUser,
     DiscordBanUser,
+    DiscordDeleteMessage,
+    DiscordGetMembers,
+    DiscordGetMessages,
+    DiscordGetUser,
+    DiscordSendMessage,
 )
+from langchain_community.utilities.discord import DiscordAPIWrapper
 
 if TYPE_CHECKING:
     import discord
@@ -21,7 +21,9 @@ class DiscordToolkit(BaseToolkit):
     """Toolkit for interacting with Discord."""
 
     @classmethod
-    def from_discord_api_wrapper(cls, discord_api_wrapper: DiscordAPIWrapper) -> "DiscordToolkit":
+    def from_discord_api_wrapper(
+        cls, discord_api_wrapper: DiscordAPIWrapper
+    ) -> "DiscordToolkit":
         tools = [
             DiscordGetMessages(api_wrapper=discord_api_wrapper),
             DiscordSendMessage(api_wrapper=discord_api_wrapper),

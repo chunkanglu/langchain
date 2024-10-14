@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from contextlib import asynccontextmanager
-from typing import TYPE_CHECKING, Dict, Any
+from typing import TYPE_CHECKING, Any, Dict
 
 from langchain_core.utils import get_from_dict_or_env
 from pydantic import BaseModel, model_validator
@@ -17,7 +17,7 @@ class DiscordAPIWrapper(BaseModel):
 
     discord_client: Any = None
     discord_token: str = None
-    
+
     @model_validator(mode="before")
     @classmethod
     def validate_environment(cls, values: Dict) -> dict:
@@ -29,10 +29,10 @@ class DiscordAPIWrapper(BaseModel):
                 f"Could not import discord python package. "
                 f"Please install it with `pip install -U discord.py`."
             ) from e
-        
+
         discord_token = get_from_dict_or_env(values, "discord_token", "DISCORD_TOKEN")
-        # TODO: other needed configurations here        
-        
+        # TODO: other needed configurations here
+
         if not discord_token:
             # TODO: link to discord instructions
             raise ValueError(
@@ -47,7 +47,7 @@ class DiscordAPIWrapper(BaseModel):
     @asynccontextmanager
     async def create_connection(self):
         """Context manager for automatically setting up and closing the connection.
-        
+
         Can be used to wrap each call to the Discord API for tools in this wrapper class.
 
         Example:
@@ -61,4 +61,3 @@ class DiscordAPIWrapper(BaseModel):
             yield
         finally:
             await self.discord_client.close()
-    

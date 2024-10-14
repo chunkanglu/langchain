@@ -100,11 +100,11 @@ if TYPE_CHECKING:
         DuckDuckGoSearchRun,
     )
     from langchain_community.tools.discord import (
+        DiscordBanUser,
+        DiscordDeleteMessage,
         DiscordGetMembers,
         DiscordGetMessages,
         DiscordGetUser,
-        DiscordBanUser,
-        DiscordDeleteMessage,
         DiscordSendMessage,
     )
     from langchain_community.tools.e2b_data_analysis.tool import (
