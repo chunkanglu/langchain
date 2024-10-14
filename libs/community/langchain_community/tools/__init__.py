@@ -99,6 +99,14 @@ if TYPE_CHECKING:
         DuckDuckGoSearchResults,
         DuckDuckGoSearchRun,
     )
+    from langchain_community.tools.discord import (
+        DiscordGetMembers,
+        DiscordGetMessages,
+        DiscordGetUser,
+        DiscordBanUser,
+        DiscordDeleteMessage,
+        DiscordSendMessage,
+    )
     from langchain_community.tools.e2b_data_analysis.tool import (
         E2BDataAnalysisTool,
     )
@@ -386,6 +394,12 @@ __all__ = [
     "CurrentWebPageTool",
     "DeleteFileTool",
     "DataheraldTextToSQL",
+    "DiscordGetMessages",
+    "DiscordSendMessage",
+    "DiscordDeleteMessage",
+    "DiscordGetMembers",
+    "DiscordGetUser",
+    "DiscordBanUser",
     "DuckDuckGoSearchResults",
     "DuckDuckGoSearchRun",
     "E2BDataAnalysisTool",
@@ -538,6 +552,12 @@ _module_lookup = {
     "DataheraldTextToSQL": "langchain_community.tools.dataherald.tool",
     "DeleteFileTool": "langchain_community.tools.file_management",
     "Detector": "langchain_community.tools.zenguard.tool",
+    "DiscordGetMessages": "langchain_community.tools.discord.get_messages",
+    "DiscordSendMessage": "langchain_community.tools.discord.send_message",
+    "DiscordDeleteMessage": "langchain_community.tools.discord.delete_message",
+    "DiscordGetMembers": "langchain_community.tools.discord.get_members",
+    "DiscordGetUser": "langchain_community.tools.discord.get_user",
+    "DiscordBanUser": "langchain_community.tools.discord.ban_user",
     "DuckDuckGoSearchResults": "langchain_community.tools.ddg_search.tool",
     "DuckDuckGoSearchRun": "langchain_community.tools.ddg_search.tool",
     "E2BDataAnalysisTool": "langchain_community.tools.e2b_data_analysis.tool",
