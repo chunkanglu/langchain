@@ -1,4 +1,4 @@
-from typing import TYPE_CHECKING, List
+from typing import List
 
 from langchain_core.tools import BaseTool
 from langchain_core.tools.base import BaseToolkit
@@ -13,12 +13,11 @@ from langchain_community.tools.discord import (
 )
 from langchain_community.utilities.discord import DiscordAPIWrapper
 
-if TYPE_CHECKING:
-    import discord
-
 
 class DiscordToolkit(BaseToolkit):
     """Toolkit for interacting with Discord."""
+
+    tools: List[BaseTool] = []
 
     @classmethod
     def from_discord_api_wrapper(
@@ -32,7 +31,7 @@ class DiscordToolkit(BaseToolkit):
             DiscordGetUser(api_wrapper=discord_api_wrapper),
             DiscordBanUser(api_wrapper=discord_api_wrapper),
         ]
-        return cls(tools=tools)
+        return cls(tools=tools)  # type: ignore[arg-type]
 
     def get_tools(self) -> List[BaseTool]:
         """Get the tools in the toolkit."""

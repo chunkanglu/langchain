@@ -27,7 +27,7 @@ if TYPE_CHECKING:
     from langchain_community.agent_toolkits.connery import (
         ConneryToolkit,
     )
-    from langchain_community.agent_toolkits.discord import (
+    from langchain_community.agent_toolkits.discord.toolkit import (
         DiscordToolkit,
     )
     from langchain_community.agent_toolkits.file_management.toolkit import (
